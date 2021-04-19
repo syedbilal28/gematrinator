@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://kit.fontawesome.com/dd623901d8.js" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&family=Montserrat:wght@300&family=Raleway&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        #adv{
+            border-left:1px solid grey;
+            min-height:100vh;
+            float:right;
+        }
+        .container{
+            min-width:95vw;
+        }
+        
+        #cipher-list-wrapper{
+            border:1px solid grey;
+            border-radius:1rem;
+        }
+        #cipher-list{
+            list-style:none;
+            padding:0px;
+            text-align:center;
+        }
+        .cipher{
+            border-bottom:1px solid grey;
+            font-family: 'Lato', sans-serif;
+            color:#04151F;
+        }
+        #cipher-scores{
+            margin-top:20px;
+            margin-right:auto;
+            margin-left:auto;
+        }
+        .cipher-scores-row{
+            margin-bottom:0.5rem;
+        }
+        .col-sm-1{
+            text-align: center;
+            padding:0.25rem;
+            margin-left:0.25rem;
+            margin-right:0.25rem;
+            border:1px solid grey;
+            border-radius: 0.25rem;
+            font-family:'Raleway', sans-serif;
+        }
+        #entry{
+            min-width:38rem;
+        }
+        .flex-item{
+            margin-right:10px;
+            margin-left:10px;
+        }
+        #calc-section{
+            padding:20px 0px;
+            border:1px solid grey;
+        }
+        #cards-wrapper{
+            margin-top:20px;
+        }
+        .card-img{
+            max-width:8rem;
+        }
+        .card{
+            flex-direction:row !important;
+            border:1px solid grey;
+        }
+        .card-data{
+            margin-top:auto;
+            margin-bottom:auto;
+        }
+        .featured{
+            position: absolute;
+            left:0px;
+            top:0px;
+            background-color:gold;
+            border-radius:0.25rem 0.25rem 1rem 0.25rem;
+            max-height:25px;
+            padding:0px 5px;
+            color:#666666;
+            font-weight:200;
+        }
+        .category{
+            font-size:18px;
+            font-weight:500;
+            font-family:'Raleway', sans-serif;
+            /* color:#243E36; */
+        }
+        .group{
+            font-size:18px;
+            font-weight:500;
+            font-family:'Raleway', sans-serif;
+            /* color:#243E36; */
+        }
+        .description{
+            font-family: 'Montserrat', sans-serif;
+            font-weight:600;
+        }
+        .entry{
+            font-family: 'Lato', sans-serif;
+            color:#595959;
+            
+        }
+        .ordinal{
+            font-family: 'Lato', sans-serif;
+            /* color:#595959; */
+            color:#28A48D;
+            
+        }
+        .translation{
+            /* color:#243E36; */
+        }
+        .translation-text{
+            font-family: 'Lato', sans-serif;
+        }
+        .score{
+            font-size:24px;
+            font-weight:500;
+            /* color:#595959; */
+            color:#28A48D;
+        }
+        #report-flag{
+            position:absolute;
+            right:20px;
+            bottom:-30px;
+            color:#595959 ;
+            /* font-family: 'Lato', sans-serif; */
+        }
+        #report-text{
+            padding-left:5px;
+            font-family: 'Lato', sans-serif;
+        }
+        #report-flag:hover{
+            color:red;
+            cursor:pointer;
+            
+        }
+        .add-group{
+            position:absolute;
+            top:0px;
+            right:0px;
+            color:#28A48D;
+            background-color:#e6e6e6;
+            padding:0px 10px;
+            border-radius:0.25px 0.25rem 0.25rem 0.5rem;
+        }
+        #group-heading{
+            font-family: 'Lato', sans-serif;
+        }
+        #group-description{
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
+</head>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Germatrinator</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Wikis</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Modes
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            
+          </ul>
+          
+        </div>
+      </nav>
+      <div class="container row">
+            <div class="col-10 mx-2" id="main">
+                <div id="group p-1s">
+                    <div id="group-header">
+                        <h2 id="group-heading">Messiah</h2>
+                        <p id="group-description">In Abrahamic religions, a messiah or messias (Hebrew: מָשִׁיחַ‎, romanized: māšîaḥ; Greek: μεσσίας, messías; Arabic: مسيح‎, masîḥ; lit. 'the anointed one') is a saviour or liberator of a group of people. The concepts of mashiach, messianism, and of a Messianic Age originated in Judaism,[1][2] and in the Hebrew Bible, in which a mashiach is a king or High Priest traditionally anointed with holy anointing oil.</p>
+                    </div>
+                    <div id="group-body">
+                        <div id="cards"> 
+                            <div class="card row p-2 py-4 mb-2 shadow">
+                                <!-- <div class="add-group">
+                                    <p class="add-link"><i class="fas fa-plus add-icon" ></i>  Add this card to a group</p>
+                                </div> -->
+                                <div class="featured">
+                                    <p>featured</p>
+                                </div>
+                                <div class="col-2">
+                                    <!-- <img class="rounded card-img my-2" src="download.jpg"> -->
+                                    <div class="row px-4 py-2">
+                                        <p class="score">74</p>
+                                    </div>
+                                    <div class="row px-3">
+                                        <h5 class="ordinal">English Ordinal</h5>
+                                    </div>
+                                    <div class="row px-3">
+                                        <p class="category">Categories: People, religion</p>
+                                    </div>
+                                    <div class="row px-3">
+                                        <p class="group">Groups: Jesus Christ, Messiah</p>
+                                    </div>
+                                </div>
+                                <div class="col-10 card-data row ">
+                                    <div class="">
+                                        <div class="row">
+                                            <h4 class="entry">For I am convinced that neither death nor life, neither angels nor demons, neither the present nor the future, nor any powers, neither height nor depth, nor anything else in all creation, will be able to separate us from the love of God that is in Christ Jesus our Lord.</h4>
+                                        </div>
+                                        <div class="row">
+                                            <p class="translation-text">Porque estoy convencido de que ni la muerte ni la vida, ni los ángeles ni los demonios, ni el presente ni el futuro, ni ningún poder, ni lo alto ni lo profundo, ni ninguna otra cosa en toda la creación, podrá separarnos del amor de Dios que está en Cristo Jesús nuestro Señor.</p>
+                                        </div>
+                                        <div class="row">
+                                            <p class="origin">Spanish Translation</p>
+
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <p class="description">Jesus[e] (c. 4 BC – AD 30 / 33), also referred to as Jesus of Nazareth or Jesus Christ,[f] was a first-century Jewish preacher and religious leader.[11] He is the central figure of Christianity, the world's largest religion. Most Christians believe he is the incarnation of God the Son and the awaited messiah (the Christ) prophesied in the Old Testament</p>
+                                    </div>
+                                    <i class="fas fa-flag float-right" id="report-flag"><span id="report-text"></span></i>
+                                    
+                                </div>
+                            </div>
+                            <div class="card row p-2 py-4 mb-2 shadow">
+                                <!-- <div class="add-group">
+                                    <p class="add-link"><i class="fas fa-plus add-icon" ></i>  Add this card to a group</p>
+                                </div>
+                                <div class="featured">
+                                    <p>featured</p>
+                                </div> -->
+                                <div class="col-2">
+                                    <img class="rounded card-img my-2" src="templates\download.jpg">
+                                    <div class="row px-4 py-2">
+                                        <p class="score">74</p>
+                                    </div>
+                                    <div class="row px-3">
+                                        <h5 class="ordinal">English Ordinal</h5>
+                                    </div>
+                                    <div class="row px-3">
+                                        <p class="category">Categories: People, religion</p>
+                                    </div>
+                                    <div class="row px-3">
+                                        <p class="group">Groups: Jesus Christ, Messiah</p>
+                                    </div>
+                                </div>
+                                <div class="col-10 card-data row ">
+                                    <div class="">
+                                        <div class="row">
+                                            <h4 class="entry">For I am convinced that neither death nor life, neither angels nor demons, neither the present nor the future, nor any powers, neither height nor depth, nor anything else in all creation, will be able to separate us from the love of God that is in Christ Jesus our Lord.</h4>
+                                        </div>
+                                        <div class="row">
+                                            <p class="translation-text">Porque estoy convencido de que ni la muerte ni la vida, ni los ángeles ni los demonios, ni el presente ni el futuro, ni ningún poder, ni lo alto ni lo profundo, ni ninguna otra cosa en toda la creación, podrá separarnos del amor de Dios que está en Cristo Jesús nuestro Señor.</p>
+                                        </div>
+                                        <div class="row">
+                                            <p class="origin">Spanish Translation</p>
+
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <p class="description">Jesus[e] (c. 4 BC – AD 30 / 33), also referred to as Jesus of Nazareth or Jesus Christ,[f] was a first-century Jewish preacher and religious leader.[11] He is the central figure of Christianity, the world's largest religion. Most Christians believe he is the incarnation of God the Son and the awaited messiah (the Christ) prophesied in the Old Testament</p>
+                                    </div>
+                                    <i class="fas fa-flag float-right" id="report-flag"><span id="report-text"></span></i>
+                                    
+                                </div>
+                            </div>
+                            
+                            
+                    </div>
+                </div>
+
+            
+            </div>
+            </div>
+            <div class="col-1" id="adv">
+
+            </div>
+    </div>
+        
+</body>
+</html>
