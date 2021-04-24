@@ -34,6 +34,7 @@
             border-bottom:1px solid grey;
             font-family: 'Lato', sans-serif;
             color:#04151F;
+            opacity:0.7;
         }
         #cipher-scores{
             margin-top:20px;
@@ -178,6 +179,9 @@
         #word{
             color:#ffa50a;
         }
+        .selected{
+            opacity: 1;
+        }
     </style>
 </head>
 
@@ -240,7 +244,7 @@
                                     <input class="form-control shadow" placeholder="Type a word or phrase" id="entry">
                                 </div>
                                 <div id="cipher-input-button" class="flex-item">
-                                    <button type="button" class="btn btn-light shadow">Light</button>
+                                    <button type="button" class="btn btn-light shadow" onclick="SearchEntry(event)">Match</button>
                                 </div>
                             </div>
                             <div id="cipher-scores">
@@ -549,4 +553,39 @@
         </div>
       </div>
 </body>
+<script>
+     function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+ function SearchEntry(e){
+     var entry_text=document.querySelector("#entry").value
+     let csrftoken= getCookie('csrftoken')
+     $.ajax({
+         "url":"{% url 'search' %}",
+         "method":"POST",
+         "datatype":"json",
+         "headers":{
+          "X-CSRFToken":csrftoken
+        },
+         "data":{
+             "entry":entry_text
+         },
+         "success":function(e){
+             console.log(e)
+         }
+     })
+ }
+</script>
 </html>
