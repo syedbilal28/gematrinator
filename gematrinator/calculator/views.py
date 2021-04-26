@@ -46,4 +46,4 @@ def search(request):
         reverse_ordinal_count+=reverse_ordinal[i]
         full_reduction_count+=full_reduction[i]
         reverse_full_reduction_count+=reverse_full_reduction[i]
-    return JsonResponse({"ordinal_count":ordinal_count,"reverse_ordinal":reverse_ordinal_count,"full_reduction":full_reduction_count,"reverse_full_reduction":reverse_full_reduction_count})
+    return JsonResponse({"entry":entry,"ordinal_count":ordinal_count,"reverse_ordinal":reverse_ordinal_count,"full_reduction":full_reduction_count,"reverse_full_reduction":reverse_full_reduction_count})

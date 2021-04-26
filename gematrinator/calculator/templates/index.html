@@ -452,19 +452,19 @@
                                 </div>
                                 <div id="result-grid-row" class="row">
                                     <div class="col-sm-2 result-box">
-                                        <p>Messiah</p>
+                                        <p id="entry-result">Messiah</p>
                                     </div>
                                     <div class="col-sm-2 result-box">
-                                        <p class="english-ordinal">74</p>
+                                        <p class="english-ordinal" id="english-ordinal-score">74</p>
                                     </div>
                                     <div class="col-sm-2 result-box">
-                                        <p class="full-reduction">21</p>
+                                        <p class="full-reduction" id="full-reduction-score">21</p>
                                     </div>
                                     <div class="col-sm-2 result-box">
-                                        <p class="reverse-ordinal">27</p>
+                                        <p class="reverse-ordinal" id="reverse-ordinal-score">27</p>
                                     </div>
                                     <div class="col-sm-2 result-box">
-                                        <p class="reverse-full-reduction">51</p>
+                                        <p class="reverse-full-reduction" id="reverse-full-reduction-score">51</p>
                                     </div>
                                 </div>
                             </div>    
@@ -584,6 +584,12 @@
          },
          "success":function(e){
              console.log(e)
+             document.querySelector("#entry-result").innerHTML=e.entry
+             document.querySelector("#english-ordinal-score").innerHTML=e.ordinal_count
+             document.querySelector("#reverse-ordinal-score").innerHTML=e.reverse_ordinal
+             document.querySelector("#full-reduction-score").innerHTML=e.full_reduction
+             document.querySelector("#reverse-full-reduction-score").innerHTML=e.reverse_full_reduction
+
          }
      })
  }
